@@ -31,3 +31,23 @@ exports.deleteSweet = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+
+exports.purchaseSweet = async (req, res) => {
+  try {
+    const { amount = 1 } = req.body;
+    const sweet = await sweetService.purchaseSweet(req.params.id, amount);
+    res.json(sweet);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
+
+exports.restockSweet = async (req, res) => {
+  try {
+    const { amount } = req.body;
+    const sweet = await sweetService.restockSweet(req.params.id, amount);
+    res.json(sweet);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+};
