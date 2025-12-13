@@ -1,4 +1,5 @@
 const express = require("express");
+const errorHandler = require("./middleware/error.middleware");
 
 const app = express();
 
@@ -11,5 +12,7 @@ app.use("/api/sweets", require("./routes/sweet.routes"));
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "OK" });
 });
+
+app.use(errorHandler); // ALWAYS LAST
 
 module.exports = app;

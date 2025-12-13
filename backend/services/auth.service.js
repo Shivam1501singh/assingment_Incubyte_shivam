@@ -1,15 +1,16 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const AppError=require("../utils/AppError");
 
 exports.register = async ({ name, email, password }) => {
   if (!name || !email || !password) {
-    throw new Error("Missing required fields");
+    throw new AppError("Missing required fields",400);
   }
 
   const existingUser = await User.findOne({ email });
   if (existingUser) {
-    throw new Error("Email already in use");
+    throw new AppError("Email already in use",401);
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -31,17 +32,17 @@ exports.register = async ({ name, email, password }) => {
 
 exports.login = async ({ email, password }) => {
   if (!email || !password) {
-    throw new Error("Missing credentials");
+    throw new AppError("Missing credentials",400);
   }
 
   const user = await User.findOne({ email });
   if (!user) {
-    throw new Error("Invalid credentials");
+    throw new AppError("Invalid credentials",401);
   }
 
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) {
-    throw new Error("Invalid credentials");
+    throw new AppError("Invalid credentials",401);
   }
 
   return jwt.sign(

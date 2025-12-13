@@ -1,11 +1,12 @@
 const Sweet = require("../models/Sweet");
+const AppError=require("../utils/AppError");
 
 exports.purchaseSweet = async (sweetId, amount = 1) => {
   const sweet = await Sweet.findById(sweetId);
-  if (!sweet) throw new Error("Sweet not found");
+  if (!sweet) throw new AppError("Sweet not found",400);
 
   if (sweet.quantity < amount) {
-    throw new Error("Insufficient stock");
+    throw new AppError("Insufficient stock",400);
   }
 
   sweet.quantity -= amount;
@@ -14,10 +15,10 @@ exports.purchaseSweet = async (sweetId, amount = 1) => {
 };
 
 exports.restockSweet = async (sweetId, amount) => {
-  if (amount <= 0) throw new Error("Invalid restock amount");
+  if (amount <= 0) throw new AppError("Invalid restock amount",400);
 
   const sweet = await Sweet.findById(sweetId);
-  if (!sweet) throw new Error("Sweet not found");
+  if (!sweet) throw new AppError("Sweet not found",404);
 
   sweet.quantity += amount;
   await sweet.save();
@@ -37,13 +38,13 @@ exports.updateSweet = async (id, updates) => {
     new: true,
     runValidators: true,
   });
-  if (!sweet) throw new Error("Sweet not found");
+  if (!sweet) throw new AppError("Sweet not found",404);
   return sweet;
 };
 
 exports.deleteSweet = async (id) => {
   const sweet = await Sweet.findByIdAndDelete(id);
-  if (!sweet) throw new Error("Sweet not found");
+  if (!sweet) throw new AppError("Sweet not found",404);
 };
 
 exports.searchSweets = async (query) => {

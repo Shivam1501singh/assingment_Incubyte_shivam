@@ -1,15 +1,15 @@
 const sweetService = require("../services/sweet.service");
 
-exports.createSweet = async (req, res) => {
+exports.createSweet = async (req, res,next) => {
   try {
     const sweet = await sweetService.createSweet(req.body);
     res.status(201).json(sweet);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    next(err);
   }
 };
 
-exports.getAllSweets = async (req, res) => {
+exports.getAllSweets = async (req, res,next) => {
   const sweets = await sweetService.getAllSweets();
   res.json(sweets);
 };
@@ -19,36 +19,36 @@ exports.updateSweet = async (req, res) => {
     const sweet = await sweetService.updateSweet(req.params.id, req.body);
     res.json(sweet);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    next(err);
   }
 };
 
-exports.deleteSweet = async (req, res) => {
+exports.deleteSweet = async (req, res,next) => {
   try {
     await sweetService.deleteSweet(req.params.id);
     res.json({ message: "Deleted" });
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    next(err);
   }
 };
 
-exports.purchaseSweet = async (req, res) => {
+exports.purchaseSweet = async (req, res,next) => {
   try {
     const { amount = 1 } = req.body;
     const sweet = await sweetService.purchaseSweet(req.params.id, amount);
     res.json(sweet);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    next(err);
   }
 };
 
-exports.restockSweet = async (req, res) => {
+exports.restockSweet = async (req, res,next) => {
   try {
     const { amount } = req.body;
     const sweet = await sweetService.restockSweet(req.params.id, amount);
     res.json(sweet);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    next(err);
   }
 };
 
