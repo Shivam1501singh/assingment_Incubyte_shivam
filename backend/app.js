@@ -4,6 +4,10 @@ const app = express();
 
 app.use(express.json());
 
+app.use("/api/auth", require("./routes/auth.routes"));
+app.use("/api/protected", require("./routes/protected.routes"));
+app.use("/api/sweets", require("./routes/sweet.routes"));
+
 app.get("/api/health", (req, res) => {
   res.status(200).json({ status: "OK" });
 });
