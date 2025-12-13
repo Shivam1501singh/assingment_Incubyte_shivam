@@ -26,4 +26,8 @@ const sweetSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+sweetSchema.index({ name: "text" });
+sweetSchema.index({ category: 1 });
+sweetSchema.index({ price: 1 });
+
 module.exports = mongoose.model("Sweet", sweetSchema);

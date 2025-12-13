@@ -6,6 +6,8 @@ const controller = require("../controllers/sweet.controller");
 
 router.post("/", auth, controller.createSweet);
 router.get("/", auth, controller.getAllSweets);
+router.get("/search", auth, controller.searchSweets);
+
 router.put("/:id", auth, controller.updateSweet);
 router.delete("/:id", auth, controller.deleteSweet);
 

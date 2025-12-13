@@ -45,3 +45,23 @@ exports.deleteSweet = async (id) => {
   const sweet = await Sweet.findByIdAndDelete(id);
   if (!sweet) throw new Error("Sweet not found");
 };
+
+exports.searchSweets = async (query) => {
+  const filter = {};
+
+  if (query.name) {
+    filter.$text = { $search: query.name };
+  }
+
+  if (query.category) {
+    filter.category = query.category;
+  }
+
+  if (query.minPrice || query.maxPrice) {
+    filter.price = {};
+    if (query.minPrice) filter.price.$gte = Number(query.minPrice);
+    if (query.maxPrice) filter.price.$lte = Number(query.maxPrice);
+  }
+
+  return Sweet.find(filter);
+};

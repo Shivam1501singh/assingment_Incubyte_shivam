@@ -51,3 +51,9 @@ exports.restockSweet = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+
+exports.searchSweets = async (req, res) => {
+  const sweets = await sweetService.searchSweets(req.query);
+  res.json(sweets);
+};
+
