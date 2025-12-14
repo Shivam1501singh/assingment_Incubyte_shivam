@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 const AppError=require("../utils/AppError");
 
-exports.register = async ({ name, email, password }) => {
+exports.register = async ({ name, email, password, role = 'user' }) => {
   if (!name || !email || !password) {
     throw new AppError("Missing required fields",400);
   }
@@ -19,6 +19,7 @@ exports.register = async ({ name, email, password }) => {
     name,
     email,
     password: hashedPassword,
+    role,
   });
 
   const token = jwt.sign(
