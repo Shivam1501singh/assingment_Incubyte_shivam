@@ -4,6 +4,9 @@ A full-stack inventory and sales management system for a sweet shop, built as pa
 
 ---
 
+## LIVE LINK..
+https://assingment-incubyte-shivam.vercel.app/
+
 ## 📌 Project Overview
 
 This application manages sweets inventory and sales with secure authentication and role-based access. It demonstrates REST API design, database integration, frontend state management, and responsible AI-assisted development.
@@ -146,21 +149,12 @@ http://localhost:5173
 ---
 
 ## 📸 Screenshots
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/aa60d264-4121-444d-bb2d-5e075ce62b49" />
+<img width="1919" height="1022" alt="image" src="https://github.com/user-attachments/assets/1e5c285b-f9cf-450d-8cab-73356c94f394" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/07f6035a-ef53-4891-9be6-6fd8bb5f4fbd" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/6baac89e-8349-4154-a041-62e6436e5bd0" />
 
-*Add screenshots after running the project and upload them to the repository.*
 
-```
-/screenshots/login.png
-/screenshots/dashboard.png
-/screenshots/cart.png
-/screenshots/restock.png
-```
-
-Usage in README:
-
-```md
-![Dashboard](screenshots/dashboard.png)
-```
 
 ---
 
