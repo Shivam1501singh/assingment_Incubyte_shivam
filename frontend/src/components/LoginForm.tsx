@@ -138,7 +138,7 @@ export const LoginForm = ({ onLogin, onRegister }: LoginFormProps) => {
           </div>
           {!isRegister && (
             <p className="text-xs text-muted-foreground text-center mt-2">
-              Demo: admin@example.com/admin123 or staff@example.com/staff123
+              
             </p>
           )}
         </CardContent>
