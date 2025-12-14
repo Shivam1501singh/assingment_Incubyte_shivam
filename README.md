@@ -4,6 +4,9 @@ A full-stack inventory and sales management system for a sweet shop, built as pa
 
 ---
 
+## LIVE LINK..
+https://assingment-incubyte-shivam.vercel.app/
+
 ## 📌 Project Overview
 
 This application manages sweets inventory and sales with secure authentication and role-based access. It demonstrates REST API design, database integration, frontend state management, and responsible AI-assisted development.
