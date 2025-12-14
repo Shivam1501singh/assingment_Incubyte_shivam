@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-  origin: ["https://assingment-incubyte-shivam.vercel.app/"],
+  origin: ["http://localhost:8080","https://assingment-incubyte-shivam.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: false,
