@@ -10,7 +10,7 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'https://assingment-incubyte-shivam.onrender.com',
         changeOrigin: true,
       },
     },
