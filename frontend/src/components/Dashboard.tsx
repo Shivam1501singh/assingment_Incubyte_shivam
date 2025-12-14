@@ -95,7 +95,7 @@ export const Dashboard = ({ user, onLogout }: DashboardProps) => {
     // Purchase items
     try {
       for (const item of cart.items) {
-        const response = await fetch(`/api/sweets/${item.sweet.id}/purchase`, {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/sweets/${item.sweet.id}/purchase`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

@@ -1,4 +1,5 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+// const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const API_BASE_URL="https://assingment-incubyte-shivam.onrender.com"
 
 export const http = async (
   endpoint: string,

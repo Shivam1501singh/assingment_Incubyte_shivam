@@ -17,7 +17,7 @@ export const useAuth = () => {
 
   const fetchUser = async (token: string) => {
     try {
-      const response = await http('/api/protected', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/protected`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -37,13 +37,14 @@ export const useAuth = () => {
 
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      const response = await http('/api/auth/login', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ email, password }),
       });
+      console.log('Login response:', response);
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('sweetshop_token', data.token);
@@ -58,7 +59,7 @@ export const useAuth = () => {
 
   const register = async (name: string, email: string, password: string, role: 'user' | 'admin'): Promise<boolean> => {
     try {
-      const response = await http('/api/auth/register', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -22,7 +22,7 @@ export const useSweets = () => {
 
   const fetchSweets = async () => {
     try {
-      const response = await http('/api/sweets', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/sweets`, {
         headers: getAuthHeaders(),
       });
       if (response.ok) {
@@ -45,7 +45,7 @@ export const useSweets = () => {
 
   const addSweet = async (sweet: Omit<Sweet, 'id' | 'createdAt'>) => {
     try {
-      const response = await http('/api/sweets', {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/sweets`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ export const useSweets = () => {
       if (updates.stock !== undefined) updateData.quantity = updates.stock;
       if (updates.description !== undefined) updateData.description = updates.description;
 
-      const response = await http(`/api/sweets/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/sweets/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ export const useSweets = () => {
 
   const deleteSweet = async (id: string) => {
     try {
-      const response = await http(`/api/sweets/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/sweets/${id}`, {
         method: 'DELETE',
         headers: getAuthHeaders(),
       });
