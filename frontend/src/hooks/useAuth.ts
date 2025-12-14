@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { User } from '@/types/sweet';
+import {http} from '@/api/http'
 
 export const useAuth = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -16,7 +17,7 @@ export const useAuth = () => {
 
   const fetchUser = async (token: string) => {
     try {
-      const response = await fetch('/api/protected', {
+      const response = await http('/api/protected', {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -36,7 +37,7 @@ export const useAuth = () => {
 
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
-      const response = await fetch('/api/auth/login', {
+      const response = await http('/api/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -57,7 +58,7 @@ export const useAuth = () => {
 
   const register = async (name: string, email: string, password: string, role: 'user' | 'admin'): Promise<boolean> => {
     try {
-      const response = await fetch('/api/auth/register', {
+      const response = await http('/api/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
