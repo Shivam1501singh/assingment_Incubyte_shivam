@@ -153,12 +153,6 @@ http://localhost:5173
 
 
 
-Usage in README:
-
-```md
-![Dashboard](screenshots/dashboard.png)
-```
-
 ---
 
 ## 🧪 Testing & TDD
